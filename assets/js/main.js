@@ -35,24 +35,8 @@ function initSplash() {
     requestAnimationFrame(() => splash.classList.add('show'));
   });
 
-  // 演出は2秒程度で終わり、操作を妨げない
-  const autoTimer = setTimeout(closeSplash, 2000);
-
-  const skipBtn = document.getElementById('splashSkip');
-  if (skipBtn) {
-    skipBtn.addEventListener('click', () => {
-      clearTimeout(autoTimer);
-      closeSplash();
-    });
-  }
-
-  // 画面タップでもスキップできるようにする
-  splash.addEventListener('click', (e) => {
-    if (e.target === splash) {
-      clearTimeout(autoTimer);
-      closeSplash();
-    }
-  });
+  // 演出は2秒程度で終わり、操作を妨げない（黒い幕が下から上へ流れて消える）
+  setTimeout(closeSplash, 2000);
 }
 
 function initMobileNav() {

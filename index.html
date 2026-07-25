@@ -16,7 +16,6 @@
   <!-- ===== オープニング演出（トップページのみ／sessionStorageで1回だけ表示） ===== -->
   <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
     <p class="splash-text">吉野東小学校 ICT研修<span class="splash-sub">iPad × Gemini × Gemini Notebook × Canva</span></p>
-    <button type="button" id="splashSkip" class="splash-skip">スキップ</button>
   </div>
 
   <!-- コピー完了などを通知するライブリージョン（視覚的には非表示） -->
@@ -202,30 +201,37 @@
 
       <div class="card card-hover instructor-card">
         <div class="instructor-flex">
-          <!-- 講師写真：assets/images/profile.jpg を差し替えてください（画像が無くても崩れません） -->
-          <div class="instructor-photo" role="img" aria-label="和田倫周 プロフィール写真">
-            <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          <!-- 講師写真：assets/images/instructor-illustration.png を差し替えてください（画像が無くても崩れません） -->
+          <div class="instructor-photo">
+            <img src="assets/images/instructor-illustration.png" alt="和田倫周 プロフィールイラスト" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <span class="material-symbols-outlined avatar-fallback-icon" aria-hidden="true">person</span>
           </div>
           <div>
             <h3 class="instructor-name">和田 倫周 <span class="yomi">（わだ みちひろ）</span></h3>
-            <p class="instructor-role">鹿児島県立開陽高等学校 定時制課程　国語科教諭・司書教諭</p>
+            <p class="instructor-role">鹿児島県立開陽高等学校 定時制課程 進路支援部主任 / 国語科教諭・司書教諭</p>
 
-            <div class="pill-row">
+            <!-- 資格バッジ：画像は assets/images/google-trainer-badge.png・canvassador-badge.png を差し替えてください（画像が無くても崩れません） -->
+            <div class="badge-row">
               <span class="grad-pill">Google for Education 認定トレーナー</span>
-              <span class="grad-pill">Google認定教育者 Level 1・Level 2</span>
-              <span class="grad-pill">Gemini認定教育者</span>
-              <span class="grad-pill">Canva Teacher Canvassador</span>
-              <span class="grad-pill">GEG Kagoshima 共同リーダー</span>
-              <span class="grad-pill">GEG Japan Mentors 九州・沖縄</span>
+              <img src="assets/images/google-trainer-badge.png" alt="Google for Education Certified Trainer" class="badge-img" onerror="this.style.display='none';">
+            </div>
+            <div class="badge-row">
+              <span class="grad-pill">Canva 認定教育アンバサダー</span>
+              <img src="assets/images/canvassador-badge.png" alt="Canva Canvassador 2026" class="badge-img-round" onerror="this.style.display='none';">
+            </div>
+            <div class="pill-row">
+              <span class="grad-pill">GEG Mentors 2025-2026</span>
+              <span class="grad-pill">GEG Kagoshima 認定共同リーダー</span>
+              <span class="grad-pill">Gemini 認定教育者</span>
+              <span class="grad-pill">CEC鹿児島リーダー</span>
             </div>
 
             <p class="instructor-bio">
-              学校現場でのGoogle Workspace、生成AI、Canva、GAS、Webアプリ等の活用を通して、授業改善と校務効率化を支援している。
+              1969年東京生まれ。大学在学中からテレビ局での深夜番組制作に携わり、卒業後は東京赤坂のヨーロッパ専門の旅行会社に勤務。退職後、古着と雑貨の輸入で起業した後、教職へ。初任・鹿屋高校、屋久島高校、鶴丸高校、鹿屋高校(2回目)を経て、現在は開陽高校定時制課程で進路支援部主任を務める。ICTを活かした探究的な教育実践に注力している。
             </p>
 
             <div class="quote-box">
-              2025年度は、学校、教育委員会、研究会等、18団体で生成AI・ICT研修を実施。<br>
-              Google Workspace、Gemini、Gemini Notebook、Canva、Google Apps Scriptなどを組み合わせ、「明日から現場で使えること」を重視した研修を行っている。
+              「国語を教えるのではなく、国語で『生き方』を伝える授業」が信条。
             </div>
           </div>
         </div>
@@ -241,44 +247,31 @@
       <div class="section-head">
         <p class="badge badge-solid">Book</p>
         <h2 class="section-title">著作・活動紹介</h2>
-        <p class="section-lead">書籍カードは下に追加していくだけで増やせます。1枚分（.book-card）をコピーして、書名・出版社・紹介文・画像・リンクを書き換えてください。</p>
       </div>
 
-      <div class="grid grid-2" style="align-items:stretch;">
-
-        <!-- 著作カード1：ここから編集（書名・出版社・紹介文・画像・リンクを差し替え） -->
-        <div class="card card-hover book-card">
-          <!-- 書影：assets/images/book01.jpg を差し替えてください（画像が無くても崩れません） -->
-          <div class="book-cover" role="img" aria-label="著作タイトルをここに入力 書影">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-          </div>
-          <div class="book-info">
-            <h3>著作タイトルをここに入力</h3>
-            <p class="publisher">出版社名</p>
-            <p class="desc">学校現場での教育実践やICT活用に関する内容を紹介しています。</p>
-            <a href="#" class="btn btn-outline btn-sm">詳細を見る</a>
-          </div>
+      <!-- 著作カード1：ここから編集（書名・出版社・著者・紹介文・画像・リンクを差し替え） -->
+      <div class="card card-hover book-card">
+        <!-- 書影：assets/images/book-cover.png を差し替えてください（画像が無くても崩れません） -->
+        <div class="book-cover">
+          <img src="assets/images/book-cover.png" alt="先生のためのCanva教育版 やさしい入門 書影" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <span class="material-symbols-outlined avatar-fallback-icon" aria-hidden="true">menu_book</span>
         </div>
-        <!-- 著作カード1：ここまで -->
-
-        <!-- 著作カード2：ここから編集（書名・出版社・紹介文・画像・リンクを差し替え） -->
-        <div class="card card-hover book-card">
-          <!-- 書影：assets/images/book02.jpg を差し替えてください（画像が無くても崩れません） -->
-          <div class="book-cover book02" role="img" aria-label="著作タイトルをここに入力 書影">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-          </div>
-          <div class="book-info">
-            <h3>著作タイトルをここに入力</h3>
-            <p class="publisher">出版社名</p>
-            <p class="desc">教師としての実践や、子どもたちとの関わりについてまとめています。</p>
-            <a href="#" class="btn btn-outline btn-sm">詳細を見る</a>
-          </div>
+        <div class="book-info">
+          <h3>先生のためのCanva教育版 やさしい入門</h3>
+          <p class="publisher">[監修] 坂本良晶　[著者] 飯山彩也香、五十嵐太一、江藤由布、遠藤隆平、大野翔、恩地麻里、片岸力丸、柴田大翔、長田夢、藤井海、古川俊、<strong>和田倫周</strong></p>
+          <ul class="desc">
+            <li><span class="label">定価:</span><span>1,980円（本体1,800円+税10%）</span></li>
+            <li><span class="label">発売日:</span><span>2026.5.28</span></li>
+            <li><span class="label">判型:</span><span>B5変形 / 208ページ</span></li>
+            <li><span class="label">ISBN:</span><span>978-4-297-15660-2</span></li>
+          </ul>
+          <a href="https://gihyo.jp/book/2026/978-4-297-15660-2" target="_blank" rel="noopener" class="btn btn-primary btn-sm">技術評論社サイトで見る</a>
         </div>
-        <!-- 著作カード2：ここまで -->
-
-        <!-- 著作カードを追加する場合は、上のカード1枚分をコピーしてこの下に貼り付けてください -->
-
       </div>
+      <!-- 著作カード1：ここまで -->
+
+      <!-- 著作カードを追加する場合は、上の .book-card 1ブロックをコピーしてこの下に貼り付け、grid_2などで並べてください -->
+
     </div>
   </section>
   <!-- 著作情報：ここまで -->
