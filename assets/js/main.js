@@ -2,9 +2,10 @@
 // 吉野東小学校 ICT研修ポータル 共通スクリプト
 //
 // 構成:
-//   1. initSplash()        … トップページのみのオープニング演出。
-//                              sessionStorageを使い、同一セッション中は
-//                              一度だけ表示する。「スキップ」ボタンあり。
+//   1. initSplash()        … オープニング演出（トップページ＋6つの講座ページ）。
+//                              黒い幕が下から上へ流れて2秒程度で消える。
+//                              sessionStorageを使い、ページごとに同一セッション中は
+//                              一度だけ表示する（再訪時は表示しない）。
 //   2. initMobileNav()     … 固定ヘッダーのハンバーガーメニュー開閉。
 //   3. initBackToTop()     … 一定量スクロールしたら「トップへ戻る」ボタンを表示。
 //   4. initCopyButtons()   … プロンプトのコピー機能＋「コピーしました」トースト。
@@ -17,14 +18,15 @@ function initSplash() {
   if (!splash) return;
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const alreadyShown = sessionStorage.getItem('yh-splash-shown') === '1';
+  const storageKey = 'yh-splash-shown:' + location.pathname;
+  const alreadyShown = sessionStorage.getItem(storageKey) === '1';
 
   if (alreadyShown || prefersReducedMotion) {
     splash.remove();
     return;
   }
 
-  sessionStorage.setItem('yh-splash-shown', '1');
+  sessionStorage.setItem(storageKey, '1');
 
   const closeSplash = () => {
     splash.classList.add('hide');
