@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>第6講座 学校で安全に生成AIを使う | 吉野東小学校 ICT研修ポータル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>吉野東小学校<span class="sub">ICT研修ポータル</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html#courses">講座一覧</a>
+        <a href="../guides/basic-operation.html">基礎操作</a>
+        <a href="../guides/troubleshooting.html">トラブル対処</a>
+        <a href="06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="../index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>講座一覧</a>
+    <a href="../guides/basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="../guides/troubleshooting.html"><span class="material-symbols-outlined" aria-hidden="true">build</span>トラブル対処</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#courses">講座一覧</a><span class="sep">/</span>
+      <span>第6講座</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">shield</span>第6講座</span>
+      <h1>学校で安全に生成AIを使う</h1>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="toc" aria-label="この講座の目次">
+      <p class="toc-title"><span class="material-symbols-outlined" aria-hidden="true">list</span>この講座の内容</p>
+      <ol>
+        <li><a href="#goals">この講座でできるようになること</a></li>
+        <li><a href="#input">入力しない、または匿名化する情報</a></li>
+        <li><a href="#recording">録音時の注意</a></li>
+        <li><a href="#check">AI回答の確認</a></li>
+        <li><a href="#prompts">コピー用プロンプト</a></li>
+        <li><a href="#example">実践例</a></li>
+        <li><a href="#caution">注意点</a></li>
+        <li><a href="#trouble">よくあるトラブル</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="goals" class="block">
+    <div class="wrap">
+      <h2 class="section-title">この講座でできるようになること</h2>
+      <div class="card">
+        <ul class="goal-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>個人情報の扱いを理解する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>録音時の注意点を確認する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>AIの回答を必ず人が確認する習慣を身につける</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>AIを教師の判断を支える道具として利用する</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="input" class="block">
+    <div class="wrap">
+      <h2 class="section-title">入力しない、または匿名化する情報</h2>
+      <div class="caution-card">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <ul>
+          <li>児童・保護者の氏名</li>
+          <li>住所、電話番号</li>
+          <li>成績</li>
+          <li>健康情報</li>
+          <li>家庭環境</li>
+          <li>生徒指導上の詳細</li>
+          <li>個人を特定できる面談記録</li>
+          <li>外部公開できない校内資料</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="recording" class="block">
+    <div class="wrap">
+      <h2 class="section-title">録音時の注意</h2>
+      <div class="card">
+        <ul class="goal-list" style="columns:1;">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>録音の目的を説明する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>無断で録音しない</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>学校や自治体のルールを確認する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>保存場所を確認する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>共有範囲を必要最小限にする</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>不要になった音声は削除する</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="check" class="block">
+    <div class="wrap">
+      <h2 class="section-title">AI回答の確認</h2>
+      <div class="card">
+        <ul class="goal-list" style="columns:1;">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>事実と一致しているか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>入力していない内容を追加していないか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>日時、人数、担当者が正しいか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>表現に偏りや決めつけがないか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>著作権上の問題がないか</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>最終判断を人が行っているか</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- コピー用プロンプト：ここから -->
+  <section id="prompts" class="block">
+    <div class="wrap">
+      <h2 class="section-title">コピー用プロンプト</h2>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>安全確認プロンプト</h4>
+            <p class="prompt-scene">入力前に、個人情報が含まれていないかAI自身にも確認させます（最終判断は必ず人が行います）。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt6-1">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt6-1">これから入力する文章に、
+氏名、住所、電話番号、成績、健康情報など
+個人を特定できる情報が含まれていないか確認してください。
+
+含まれている場合は、
+どの部分か具体的に指摘してください。
+
+---
+（ここに確認したい文章を貼り付けてください）</div>
+      </div>
+    </div>
+  </section>
+  <!-- コピー用プロンプト：ここまで -->
+
+  <section id="example" class="block">
+    <div class="wrap">
+      <h2 class="section-title">実践例</h2>
+      <div class="example-card">
+        <h4>個人面談記録を共有する前に確認する</h4>
+        <p>個人面談の記録をGeminiで整理する前に、安全確認プロンプトで氏名や家庭環境に関する記述が含まれていないかを確認。指摘された箇所を仮名・記号に置き換えてから、あらためて要約を依頼しました。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="caution" class="block">
+    <div class="wrap">
+      <h2 class="section-title">まとめのメッセージ</h2>
+      <div class="quote-box" style="font-size:1rem;">
+        AIに教師の仕事を任せるのではありません。<br><br>
+        文字起こし、整理、言い換え、形式変換をAIに任せ、
+        教師は、判断すること、子どもを見ること、
+        人と関わることに時間を使います。
+      </div>
+    </div>
+  </section>
+
+  <section id="trouble" class="block">
+    <div class="wrap">
+      <h2 class="section-title">よくあるトラブル</h2>
+      <div class="accordion">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="acc6-1">
+          <span>個人情報を入力してしまったかもしれない</span>
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="accordion-panel" id="acc6-1">
+          <p>速やかに学校・自治体の情報管理担当者に相談してください。該当のチャット履歴の削除など、自治体のルールに従って対応します。詳しくは<a href="../guides/troubleshooting.html" style="color:var(--color-blue-deep);font-weight:700;">トラブル対処ページ</a>もご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>困ったときは、基礎操作・トラブル対処ページを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../guides/basic-operation.html" class="btn btn-outline btn-sm">基礎操作</a>
+        <a href="../guides/troubleshooting.html" class="btn btn-outline btn-sm">トラブル対処</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="../index.html#courses" class="btn btn-primary">全6講座を振り返る<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

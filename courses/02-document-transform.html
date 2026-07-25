@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>第2講座 同じ情報を別の文書へ変換する | 吉野東小学校 ICT研修ポータル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>吉野東小学校<span class="sub">ICT研修ポータル</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="../index.html#courses">講座一覧</a>
+        <a href="../guides/basic-operation.html">基礎操作</a>
+        <a href="../guides/troubleshooting.html">トラブル対処</a>
+        <a href="06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="../index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="../index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>講座一覧</a>
+    <a href="../guides/basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="../guides/troubleshooting.html"><span class="material-symbols-outlined" aria-hidden="true">build</span>トラブル対処</a>
+  </nav>
+
+  <div class="wrap">
+    <p class="breadcrumb">
+      <a href="../index.html">トップ</a><span class="sep">/</span>
+      <a href="../index.html#courses">講座一覧</a><span class="sep">/</span>
+      <span>第2講座</span>
+    </p>
+  </div>
+
+  <section class="course-hero">
+    <div class="wrap">
+      <span class="course-num-badge"><span class="material-symbols-outlined" aria-hidden="true">sync_alt</span>第2講座</span>
+      <h1>同じ情報を別の文書へ変換する</h1>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="toc" aria-label="この講座の目次">
+      <p class="toc-title"><span class="material-symbols-outlined" aria-hidden="true">list</span>この講座の内容</p>
+      <ol>
+        <li><a href="#goals">この講座でできるようになること</a></li>
+        <li><a href="#flow">基本の流れ</a></li>
+        <li><a href="#steps">操作手順</a></li>
+        <li><a href="#prompts">コピー用プロンプト</a></li>
+        <li><a href="#example">実践例</a></li>
+        <li><a href="#caution">注意点</a></li>
+        <li><a href="#trouble">よくあるトラブル</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section id="goals" class="block">
+    <div class="wrap">
+      <h2 class="section-title">この講座でできるようになること</h2>
+      <div class="card">
+        <ul class="goal-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>会議や打合せで得た同じ情報を、目的に合わせて書き分ける</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>保護者向けのお知らせを作成する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>学級通信の記事を作成する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>管理職への報告文を作成する</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="block">
+    <div class="wrap">
+      <h2 class="section-title">基本の流れ</h2>
+      <div class="flow-diagram">
+        <div class="flow-step">第1講座で作成した文章・議事録を用意</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">Geminiに読み込ませる</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">変換したい文書の種類を伝える</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">条件を指定してプロンプトを送信</div>
+        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+        <div class="flow-step">内容を確認して仕上げる</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps" class="block">
+    <div class="wrap">
+      <h2 class="section-title">操作手順</h2>
+      <div class="card">
+        <ol class="step-list">
+          <li class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body"><h4>元になる文章を用意する</h4><p>第1講座で作成した文字起こしや議事録、または元の情報をGeminiの同じチャットに用意します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body"><h4>変換したい文書を伝える</h4><p>保護者向け・学級通信・管理職への報告など、目的の文書の種類を明確にします。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body"><h4>コピー用プロンプトを貼り付けて送信する</h4><p>下のプロンプトをコピーし、必要に応じて条件を追加して送信します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body"><h4>内容を確認し、入力していない情報が追加されていないか確かめる</h4><p>事実と異なる内容や、入力していない情報が加わっていないか必ず確認します。</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- コピー用プロンプト：ここから -->
+  <section id="prompts" class="block">
+    <div class="wrap">
+      <h2 class="section-title">コピー用プロンプト</h2>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト1：保護者向け文書</h4>
+            <p class="prompt-scene">お知らせや連絡文を保護者向けに書き換えます。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt2-1">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt2-1">この内容を、保護者向けのお知らせに書き換えてください。
+
+条件
+・目的を最初に示す
+・日時、場所、持参物を分かりやすくする
+・専門用語を避ける
+・丁寧だが堅すぎない文章にする
+・400字以内にする
+・入力されていない情報を追加しない</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト2：学級通信</h4>
+            <p class="prompt-scene">学級通信に掲載する記事として仕上げます。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt2-2">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt2-2">この内容を、学級通信に掲載する記事にしてください。
+
+条件
+・児童の学びや成長が伝わる文章
+・保護者が前向きに読める表現
+・個人が特定される内容は入れない
+・見出しを付ける
+・300字程度にする</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-card-head">
+          <div>
+            <h4>プロンプト3：管理職への報告</h4>
+            <p class="prompt-scene">結論から整理した報告文にします。</p>
+          </div>
+          <button type="button" class="copy-btn" data-copy-target="#prompt2-3">
+            <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
+            <span class="copy-label">コピー</span>
+          </button>
+        </div>
+        <div class="prompt-body" id="prompt2-3">この内容を、管理職への報告文にしてください。
+
+次の順番で整理してください。
+
+1. 結論
+2. 現状
+3. 対応したこと
+4. 今後必要なこと
+5. 確認をお願いしたいこと
+
+簡潔で事実に基づく文章にしてください。</div>
+      </div>
+    </div>
+  </section>
+  <!-- コピー用プロンプト：ここまで -->
+
+  <section id="example" class="block">
+    <div class="wrap">
+      <h2 class="section-title">実践例</h2>
+      <div class="example-card">
+        <h4>運動会の打合せ内容を3種類の文書に変換する</h4>
+        <p>第1講座で作成した運動会打合せの議事録をもとに、プロンプト1で保護者向けのお知らせを作成。プロンプト2で学級通信用の記事に変換し、プロンプト3で管理職へ準備状況を報告する文書を作成しました。同じ元情報から、目的に応じた3種類の文書を短時間で作成できました。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="caution" class="block">
+    <div class="wrap">
+      <h2 class="section-title">注意点</h2>
+      <div class="caution-card">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <ul>
+          <li>入力していない情報をAIが追加していないか、必ず確認する。</li>
+          <li>個人が特定される内容（氏名・写真の説明など）を保護者文書・学級通信に入れない。</li>
+          <li>文字数や表現の条件は、学校の実情に合わせて調整する。</li>
+          <li>公開・配布前に、必ず管理職・学年での確認を経る。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="trouble" class="block">
+    <div class="wrap">
+      <h2 class="section-title">よくあるトラブル</h2>
+      <div class="accordion">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="acc2-1">
+          <span>出力が長すぎる、または短すぎる</span>
+          <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>
+        <div class="accordion-panel" id="acc2-1">
+          <p>プロンプトの「◯字以内」「◯字程度」の数字を変更して、再度送信してください。詳しくは<a href="../guides/troubleshooting.html" style="color:var(--color-blue-deep);font-weight:700;">トラブル対処ページ</a>をご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="help-banner">
+      <p><span class="material-symbols-outlined" aria-hidden="true">help</span>困ったときは、基礎操作・トラブル対処ページを確認してください。</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="../guides/basic-operation.html" class="btn btn-outline btn-sm">基礎操作</a>
+        <a href="../guides/troubleshooting.html" class="btn btn-outline btn-sm">トラブル対処</a>
+      </div>
+    </div>
+
+    <div class="page-nav">
+      <a href="03-gemini-notebook.html" class="btn btn-primary">次の講座へ：Gemini Notebookで資料を活用する<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+      <a href="../index.html" class="btn btn-outline">トップへ戻る</a>
+    </div>
+  </div>
+
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

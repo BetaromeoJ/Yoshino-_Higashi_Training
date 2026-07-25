@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>吉野東小学校 ICT研修ポータル | iPadで記録し、AIで振り返り、次の授業と校務につなげる</title>
+<meta name="description" content="吉野東小学校のICT研修ポータル。iPad・Gemini・Gemini Notebook・Canvaを、研修当日から明日の校務・授業まで活用するための実践サイトです。">
+<!-- 研修日・学校名：ここを差し替え -->
+<meta name="training-date" content="2026年 吉野東小学校 校内ICT研修（90分）">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Material+Symbols+Outlined" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== オープニング演出（トップページのみ／sessionStorageで1回だけ表示） ===== -->
+  <div id="splash" class="splash-overlay" role="dialog" aria-label="オープニング">
+    <p class="splash-text">吉野東小学校 ICT研修<span class="splash-sub">iPad × Gemini × Gemini Notebook × Canva</span></p>
+    <button type="button" id="splashSkip" class="splash-skip">スキップ</button>
+  </div>
+
+  <!-- コピー完了などを通知するライブリージョン（視覚的には非表示） -->
+  <div id="copy-announcer" aria-live="polite" class="sr-only"></div>
+
+  <!-- ===== 固定ヘッダー ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="site-logo">
+        <span class="material-symbols-outlined" aria-hidden="true">tablet_mac</span>
+        <span>吉野東小学校<span class="sub">ICT研修ポータル</span></span>
+      </a>
+      <nav class="header-nav" aria-label="メインメニュー">
+        <a href="index.html#courses">講座一覧</a>
+        <a href="guides/basic-operation.html">基礎操作</a>
+        <a href="guides/troubleshooting.html">トラブル対処</a>
+        <a href="courses/06-safety.html">安全な活用</a>
+      </nav>
+      <button type="button" id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="navOverlay" class="nav-overlay"></div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="モバイルメニュー">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <button type="button" id="navCloseBtn" class="menu-btn" aria-label="メニューを閉じる">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a href="index.html"><span class="material-symbols-outlined" aria-hidden="true">home</span>トップ</a>
+    <a href="index.html#courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>講座一覧</a>
+    <a href="index.html#instructor"><span class="material-symbols-outlined" aria-hidden="true">person</span>講師紹介</a>
+    <a href="index.html#book"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span>著作・活動紹介</a>
+    <a href="guides/basic-operation.html"><span class="material-symbols-outlined" aria-hidden="true">play_circle</span>基礎操作を確認する</a>
+    <a href="guides/troubleshooting.html"><span class="material-symbols-outlined" aria-hidden="true">build</span>トラブル対処</a>
+  </nav>
+
+  <!-- ===== ヒーロー ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="badge">吉野東小学校 ICT研修</p>
+      <h1 class="hero-title">iPadで記録し、<br>AIで振り返り、<br><span class="accent">次の授業と校務につなげる</span></h1>
+      <p class="hero-copy">Gemini・Gemini Notebook・Canvaを、<br>明日からの仕事に生かすための実践ポータルです。研修当日はこのサイトを操作しながら進め、研修後も復習や実務での見直しに使えます。</p>
+      <div class="hero-actions">
+        <a href="#courses" class="btn btn-primary">研修を始める</a>
+        <a href="#courses" class="btn btn-outline">講座一覧を見る</a>
+        <a href="guides/basic-operation.html" class="btn btn-outline">基礎操作を確認する</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== この研修のゴール ===== -->
+  <section class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="badge badge-solid">Goal</p>
+        <h2 class="section-title">この研修のゴール</h2>
+        <p class="section-lead">基礎的な操作は基礎操作ページの動画にまかせ、研修本編では校務改善・授業改善・教材作成・安全な活用の4つに集中します。</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">work</span>
+            <h3>校務改善</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>iPadのボイスメモで録音する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>音声ファイルをGeminiへ共有する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Geminiで文字起こし、要約、議事録、記録文書を作成する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>同じ情報を保護者文書や学級通信などに加工する</li>
+          </ul>
+        </div>
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>
+            <h3>授業改善</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Gemini Notebookを授業準備や校内資料の整理に活用する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>自分の授業音声を客観的な振り返り材料として活用する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>授業のよさや改善の可能性を確認する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>分析結果を次の授業づくりにつなげる</li>
+          </ul>
+        </div>
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">palette</span>
+            <h3>教材作成</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Gemini NotebookのStudio機能でインフォグラフィックを生成する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Studio機能でスライドを生成する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>生成した資料をCanvaで編集する</li>
+          </ul>
+        </div>
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">shield</span>
+            <h3>安全な活用</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>個人情報の扱いを理解する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>録音時の注意点を確認する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>AIの回答を必ず人が確認する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>AIを教師の判断を支える道具として利用する</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 講座一覧 ===== -->
+  <section id="courses" class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="badge badge-solid">Courses</p>
+        <h2 class="section-title">6つの講座</h2>
+        <p class="section-lead">カードを選ぶと、それぞれの講座ページへ移動します。番号の順に進めても、必要な講座だけを選んでも構いません。</p>
+      </div>
+      <div class="grid grid-2">
+        <a href="courses/01-voice-gemini.html" class="card card-hover course-card">
+          <div class="course-card-top">
+            <div class="course-num">1</div>
+            <h3>iPadの音声をGeminiで仕事に変える</h3>
+          </div>
+          <p class="desc">ボイスメモで録音した音声をGeminiに共有し、文字起こし、要約、議事録、ToDoの作成まで行います。</p>
+          <span class="btn btn-primary btn-sm">講座を見る</span>
+        </a>
+        <a href="courses/02-document-transform.html" class="card card-hover course-card">
+          <div class="course-card-top">
+            <div class="course-num">2</div>
+            <h3>同じ情報を別の文書へ変換する</h3>
+          </div>
+          <p class="desc">会議や打合せの内容を、保護者文書、学級通信、管理職への報告など、目的に合った文章へ変換します。</p>
+          <span class="btn btn-primary btn-sm">講座を見る</span>
+        </a>
+        <a href="courses/03-gemini-notebook.html" class="card card-hover course-card">
+          <div class="course-card-top">
+            <div class="course-num">3</div>
+            <h3>Gemini Notebookで資料を活用する</h3>
+          </div>
+          <p class="desc">学習指導要領、校内資料、授業資料などを読み込ませ、資料を根拠に要点整理、授業案、発問、確認問題を作成します。</p>
+          <span class="btn btn-primary btn-sm">講座を見る</span>
+        </a>
+        <a href="courses/04-lesson-reflection.html" class="card card-hover course-card">
+          <div class="course-card-top">
+            <div class="course-num">4</div>
+            <h3>授業音声を振り返りに生かす</h3>
+          </div>
+          <p class="desc">自分の授業音声を客観的な振り返り材料として活用し、授業のよさや改善の可能性を確認します。</p>
+          <span class="btn btn-primary btn-sm">講座を見る</span>
+        </a>
+        <a href="courses/05-studio-canva.html" class="card card-hover course-card">
+          <div class="course-card-top">
+            <div class="course-num">5</div>
+            <h3>StudioとCanvaで教材を作る</h3>
+          </div>
+          <p class="desc">Gemini NotebookのStudio機能でインフォグラフィックやスライドを生成し、Canvaで授業に合う形へ編集します。</p>
+          <span class="btn btn-primary btn-sm">講座を見る</span>
+        </a>
+        <a href="courses/06-safety.html" class="card card-hover course-card">
+          <div class="course-card-top">
+            <div class="course-num">6</div>
+            <h3>学校で安全に生成AIを使う</h3>
+          </div>
+          <p class="desc">個人情報、録音、著作権、AIの誤りなど、学校現場で生成AIを使う際の注意点を確認します。</p>
+          <span class="btn btn-primary btn-sm">講座を見る</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 講師プロフィール：ここから編集 -->
+  <!-- ===== 講師紹介 ===== -->
+  <section id="instructor" class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="badge badge-solid">Instructor</p>
+        <h2 class="section-title">講師紹介</h2>
+      </div>
+
+      <div class="card card-hover instructor-card">
+        <div class="instructor-flex">
+          <!-- 講師写真：assets/images/profile.jpg を差し替えてください（画像が無くても崩れません） -->
+          <div class="instructor-photo" role="img" aria-label="和田倫周 プロフィール写真">
+            <span class="material-symbols-outlined" aria-hidden="true">person</span>
+          </div>
+          <div>
+            <h3 class="instructor-name">和田 倫周 <span class="yomi">（わだ みちひろ）</span></h3>
+            <p class="instructor-role">鹿児島県立開陽高等学校 定時制課程　国語科教諭・司書教諭</p>
+
+            <div class="pill-row">
+              <span class="grad-pill">Google for Education 認定トレーナー</span>
+              <span class="grad-pill">Google認定教育者 Level 1・Level 2</span>
+              <span class="grad-pill">Gemini認定教育者</span>
+              <span class="grad-pill">Canva Teacher Canvassador</span>
+              <span class="grad-pill">GEG Kagoshima 共同リーダー</span>
+              <span class="grad-pill">GEG Japan Mentors 九州・沖縄</span>
+            </div>
+
+            <p class="instructor-bio">
+              学校現場でのGoogle Workspace、生成AI、Canva、GAS、Webアプリ等の活用を通して、授業改善と校務効率化を支援している。
+            </p>
+
+            <div class="quote-box">
+              2025年度は、学校、教育委員会、研究会等、18団体で生成AI・ICT研修を実施。<br>
+              Google Workspace、Gemini、Gemini Notebook、Canva、Google Apps Scriptなどを組み合わせ、「明日から現場で使えること」を重視した研修を行っている。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 講師プロフィール：ここまで -->
+
+  <!-- 著作情報：ここから編集 -->
+  <!-- ===== 著作・活動紹介 ===== -->
+  <section id="book" class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="badge badge-solid">Book</p>
+        <h2 class="section-title">著作・活動紹介</h2>
+        <p class="section-lead">書籍カードは下に追加していくだけで増やせます。1枚分（.book-card）をコピーして、書名・出版社・紹介文・画像・リンクを書き換えてください。</p>
+      </div>
+
+      <div class="grid grid-2" style="align-items:stretch;">
+
+        <!-- 著作カード1：ここから編集（書名・出版社・紹介文・画像・リンクを差し替え） -->
+        <div class="card card-hover book-card">
+          <!-- 書影：assets/images/book01.jpg を差し替えてください（画像が無くても崩れません） -->
+          <div class="book-cover" role="img" aria-label="著作タイトルをここに入力 書影">
+            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
+          </div>
+          <div class="book-info">
+            <h3>著作タイトルをここに入力</h3>
+            <p class="publisher">出版社名</p>
+            <p class="desc">学校現場での教育実践やICT活用に関する内容を紹介しています。</p>
+            <a href="#" class="btn btn-outline btn-sm">詳細を見る</a>
+          </div>
+        </div>
+        <!-- 著作カード1：ここまで -->
+
+        <!-- 著作カード2：ここから編集（書名・出版社・紹介文・画像・リンクを差し替え） -->
+        <div class="card card-hover book-card">
+          <!-- 書影：assets/images/book02.jpg を差し替えてください（画像が無くても崩れません） -->
+          <div class="book-cover book02" role="img" aria-label="著作タイトルをここに入力 書影">
+            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
+          </div>
+          <div class="book-info">
+            <h3>著作タイトルをここに入力</h3>
+            <p class="publisher">出版社名</p>
+            <p class="desc">教師としての実践や、子どもたちとの関わりについてまとめています。</p>
+            <a href="#" class="btn btn-outline btn-sm">詳細を見る</a>
+          </div>
+        </div>
+        <!-- 著作カード2：ここまで -->
+
+        <!-- 著作カードを追加する場合は、上のカード1枚分をコピーしてこの下に貼り付けてください -->
+
+      </div>
+    </div>
+  </section>
+  <!-- 著作情報：ここまで -->
+
+  <!-- ===== 個人情報の取扱い ===== -->
+  <section class="block">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="badge badge-solid">Privacy</p>
+        <h2 class="section-title">個人情報の取扱い</h2>
+      </div>
+      <div class="caution-card">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <p>個人情報を含む資料や音声を生成AIへ入力しないでください。児童・保護者の氏名、住所、電話番号、成績、健康情報などは、番号・記号・仮名に置き換えてください。AIが生成した内容は、そのまま使用せず、必ず教職員が内容を確認してください。詳しくは<a href="courses/06-safety.html" style="color:var(--color-blue-deep);font-weight:700;">第6講座「学校で安全に生成AIを使う」</a>をご確認ください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== フッター ===== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="foot-title">吉野東小学校 ICT研修ポータル</p>
+      <p class="foot-sub">iPadで記録し、AIで振り返り、次の授業と校務につなげる。研修当日も、研修後も、困ったときも使えるポータルです。</p>
+      <div class="footer-links">
+        <a href="index.html#courses">講座一覧</a>
+        <a href="guides/basic-operation.html">基礎操作</a>
+        <a href="guides/troubleshooting.html">トラブル対処</a>
+        <a href="index.html#instructor">講師紹介</a>
+        <a href="index.html#book">著作・活動紹介</a>
+      </div>
+      <p class="footer-copy">&copy; 吉野東小学校 ICT研修ポータル</p>
+    </div>
+  </footer>
+
+  <!-- ===== トップへ戻るボタン ===== -->
+  <button type="button" id="backToTop" class="back-to-top" aria-label="トップへ戻る">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <!-- ===== トースト通知 ===== -->
+  <div id="toast" class="toast" role="status">
+    <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+    <span class="toast-label">コピーしました</span>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
