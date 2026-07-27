@@ -19,7 +19,7 @@
 ├── index.html                      トップページ（ヒーロー、研修のゴール、6講座カード、講師紹介、著作紹介）
 ├── courses/
 │   ├── 01-voice-gemini.html         第1講座：iPadの音声をGeminiで仕事に変える
-│   ├── 02-document-transform.html   第2講座：同じ情報を別の文書へ変換する
+│   ├── 02-document-transform.html   第2講座：同じ情報をGemini Notebookで別の文書に変換する
 │   ├── 03-gemini-notebook.html      第3講座：Gemini Notebookで資料を活用する
 │   ├── 04-lesson-reflection.html    第4講座：授業音声を振り返りに生かす
 │   ├── 05-studio-canva.html         第5講座：StudioとCanvaで教材を作る
