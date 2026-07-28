@@ -71,6 +71,7 @@
         <li><a href="#flow">基本の流れ</a></li>
         <li><a href="#steps">操作手順</a></li>
         <li><a href="#prompts">コピー用プロンプト</a></li>
+        <li><a href="#convert">インフォグラフィックとスライドの違い</a></li>
         <li><a href="#check">インフォグラフィックの確認項目</a></li>
         <li><a href="#canva">Canvaで行う編集</a></li>
         <li><a href="#example">実践例</a></li>
@@ -87,7 +88,8 @@
         <ul class="goal-list">
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Gemini NotebookのStudio機能でインフォグラフィックを生成する</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Studio機能でスライドを生成する</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>生成した資料をCanvaで編集する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>インフォグラフィックとスライドで異なる取り込み方法を理解する</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>生成した資料をCanvaのマジックレイヤー機能で編集する</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>授業や配布に合った教材として仕上げる</li>
         </ul>
       </div>
@@ -97,18 +99,36 @@
   <section id="flow" class="block">
     <div class="wrap">
       <h2 class="section-title">基本の流れ</h2>
-      <div class="flow-diagram">
-        <div class="flow-step">Gemini Notebookに資料を追加</div>
-        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step">Studioでインフォグラフィック生成</div>
-        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step">Studioでスライド生成</div>
-        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step">内容を確認</div>
-        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step">Canvaに読み込む</div>
-        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step">児童や授業に合わせて編集</div>
+      <p class="section-lead" style="margin-bottom:1.25rem;">インフォグラフィックは画像として生成されるためそのままCanvaへ取り込めますが、スライドは複数ページの資料として生成されるため、いったんPDF→JPEG画像への変換が必要です。</p>
+      <div class="grid grid-2">
+        <div>
+          <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.75rem;">インフォグラフィックの場合</h3>
+          <div class="flow-diagram">
+            <div class="flow-step">Gemini Notebookに資料を追加</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">Studioでインフォグラフィック生成（画像）</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">画像のままCanvaにアップロード</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">マジックレイヤーで編集</div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.75rem;">スライドの場合</h3>
+          <div class="flow-diagram">
+            <div class="flow-step">Gemini Notebookに資料を追加</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">Studioでスライド生成</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">PDFでダウンロード</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">「I Love PDF」でJPEGに変換</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">画像をCanvaにアップロード</div>
+            <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
+            <div class="flow-step">マジックレイヤーで編集</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -125,19 +145,31 @@
           </li>
           <li class="step-item">
             <div class="step-num">2</div>
-            <div class="step-body"><h4>Studioでインフォグラフィックを生成する</h4><p>Studioパネルからインフォグラフィックを選び、生成します。必要に応じて下のプロンプトで狙いを伝えます。</p></div>
+            <div class="step-body"><h4>Studioでインフォグラフィックとスライドを生成する</h4><p>Studioパネルからそれぞれを選び、生成します。必要に応じて下のプロンプトで狙いを伝えます。</p></div>
           </li>
           <li class="step-item">
             <div class="step-num">3</div>
-            <div class="step-body"><h4>Studioでスライドを生成する</h4><p>同じ資料からスライド形式の教材も生成できます。</p></div>
-          </li>
-          <li class="step-item">
-            <div class="step-num">4</div>
             <div class="step-body"><h4>生成された内容を確認する</h4><p>下の「インフォグラフィックの確認項目」に沿って内容を点検します。</p></div>
           </li>
           <li class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body"><h4>インフォグラフィック（画像）は、そのままCanvaにアップロードする</h4><p>画像として生成されているため、Canvaに直接アップロードできます。</p></div>
+          </li>
+          <li class="step-item">
             <div class="step-num">5</div>
-            <div class="step-body"><h4>PowerPointまたはPDFで書き出し、Canvaに読み込む</h4><p>Canvaで学年・教科名の追加や文字量の調整を行います。</p></div>
+            <div class="step-body"><h4>スライドはPDFでダウンロードし、「I Love PDF」でJPEG画像に変換する</h4><p>スライドは複数ページの資料のため、まずPDFとして書き出し、外部サイト「I Love PDF」でページごとのJPEG画像に変換します。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-body"><h4>変換した画像をCanvaにアップロードする</h4><p>JPEGに変換したスライドの画像を、Canvaへ読み込みます。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-body"><h4>Canvaのマジックレイヤー機能で加工する</h4><p>インフォグラフィック・スライドのどちらも画像として読み込まれているため、同じ操作で要素を選んで加工できます。</p></div>
+          </li>
+          <li class="step-item">
+            <div class="step-num">8</div>
+            <div class="step-body"><h4>学年・教科名の追加や文字量の調整を行う</h4><p>授業や配布の目的に合わせて仕上げます。</p></div>
           </li>
         </ol>
       </div>
@@ -196,6 +228,42 @@
   </section>
   <!-- コピー用プロンプト：ここまで -->
 
+  <section id="convert" class="block">
+    <div class="wrap">
+      <h2 class="section-title">インフォグラフィックとスライドの違い</h2>
+      <p class="section-lead" style="margin-bottom:1.25rem;">同じStudio機能で生成しても、出力される形式が異なるため、Canvaへの取り込み方が変わります。</p>
+      <div class="grid grid-2">
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">image</span>
+            <h3>インフォグラフィック（画像）</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Studioで生成すると、1枚の画像として出力される</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>画像なので、そのままCanvaにアップロードできる</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Canvaの「マジックレイヤー」機能で、要素ごとに選んで加工できる</li>
+          </ul>
+        </div>
+        <div class="card card-hover goal-card">
+          <div class="goal-card-head">
+            <span class="material-symbols-outlined" aria-hidden="true">slideshow</span>
+            <h3>スライド（複数ページ）</h3>
+          </div>
+          <ul class="goal-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>Studioで生成すると、複数ページのスライド資料として出力される</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>そのままではマジックレイヤーで編集できないため、まずPDFとしてダウンロードする</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>外部サイト「<a href="https://www.ilovepdf.com/" target="_blank" rel="noopener" style="color:var(--color-blue-deep);font-weight:700;">I Love PDF</a>」でPDFをJPEG画像に変換する</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>変換した画像をCanvaにアップロードすれば、インフォグラフィックと同じようにマジックレイヤーで加工できる</li>
+          </ul>
+        </div>
+      </div>
+      <div class="caution-card" style="margin-top:1.25rem;">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <p>「I Love PDF」は学校外部のWebサービスです。個人情報や校外秘の内容が含まれる資料は、変換前に必ず内容を確認し、外部に出しても問題ない資料のみアップロードしてください。</p>
+      </div>
+    </div>
+  </section>
+
   <section id="check" class="block">
     <div class="wrap">
       <h2 class="section-title">インフォグラフィックの確認項目</h2>
@@ -215,8 +283,10 @@
   <section id="canva" class="block">
     <div class="wrap">
       <h2 class="section-title">Canvaで行う編集</h2>
+      <p class="section-lead" style="margin-bottom:1.25rem;">画像として読み込んだあとは、マジックレイヤー機能で要素を選んで加工できます。仕上げの際は、あわせて以下も確認しましょう。</p>
       <div class="card">
         <ul class="goal-list" style="columns:1;">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>マジックレイヤーで不要な要素を消す・置き換える</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>タイトルを変更する</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>不要なページを削除する</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>文字量を減らす</li>
@@ -235,7 +305,11 @@
       <h2 class="section-title">実践例</h2>
       <div class="example-card">
         <h4>社会科資料をインフォグラフィックにする</h4>
-        <p>社会科の副読本をGemini Notebookに追加し、プロンプト1で図解できる要点を3つに絞ってからStudioでインフォグラフィックを生成。Canvaで学校名と学年を追加し、文字サイズを調整して、教室掲示用として印刷しました。</p>
+        <p>社会科の副読本をGemini Notebookに追加し、プロンプト1で図解できる要点を3つに絞ってからStudioでインフォグラフィックを生成。画像のままCanvaにアップロードし、マジックレイヤーで学校名と学年を追加、文字サイズを調整して、教室掲示用として印刷しました。</p>
+      </div>
+      <div class="example-card" style="margin-top:1rem;">
+        <h4>理科資料のスライドをI Love PDFで画像化してCanvaで仕上げる</h4>
+        <p>理科の資料をもとにStudioでスライドを生成し、PDFでダウンロード。「I Love PDF」でPDFをページごとのJPEG画像に変換し、Canvaに読み込みました。マジックレイヤーで不要な背景を消し、学年名を加えて授業用スライドとして使用しました。</p>
       </div>
     </div>
   </section>
@@ -248,6 +322,7 @@
         <ul>
           <li>生成された図や文章は、資料の内容と一致しているか必ず確認する。</li>
           <li>出典・引用が必要な内容は、著作権に配慮して出典を明記する。</li>
+          <li>スライドをPDF→JPEGに変換する際は、個人情報や校外秘の内容が含まれていないか確認したうえで「I Love PDF」など外部サイトを利用する。</li>
           <li>配布・掲示前に、学年・管理職での確認を経る。</li>
         </ul>
       </div>
