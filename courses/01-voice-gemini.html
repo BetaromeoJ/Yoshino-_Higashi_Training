@@ -85,7 +85,7 @@
         <ul class="goal-list">
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>iPadのボイスメモで録音する</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>音声ファイルをGeminiへ共有する</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>文字起こしと要約を行う</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>音声の内容を要約する</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check_circle</span>議事録やToDoを作成する</li>
         </ul>
       </div>
@@ -101,8 +101,6 @@
         <div class="flow-step">音声ファイルを共有</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
         <div class="flow-step">Geminiへ添付</div>
-        <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
-        <div class="flow-step">文字起こし</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
         <div class="flow-step">要約</div>
         <div class="flow-arrow"><span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></div>
@@ -123,18 +121,14 @@
           </li>
           <li class="step-item">
             <div class="step-num">2</div>
-            <div class="step-body"><h4>音声ファイルを「ファイル」に保存し共有する</h4><p>録音を終えたら、共有ボタンから「ファイル」アプリなどへ保存し、共有できる状態にします。</p></div>
+            <div class="step-body"><h4>音声ファイルを共有メニューからそのままGeminiに添付する</h4><p>ボイスメモの共有ボタンから直接Gemini（またはGemini Notebook）を選び、そのまま添付します。「ファイル」アプリなどに保存しておく必要はありません。</p></div>
           </li>
           <li class="step-item">
             <div class="step-num">3</div>
-            <div class="step-body"><h4>Geminiへファイルを添付する</h4><p>Geminiアプリまたはブラウザ版を開き、音声ファイルを添付します。</p></div>
-          </li>
-          <li class="step-item">
-            <div class="step-num">4</div>
             <div class="step-body"><h4>コピー用プロンプトを貼り付けて送信する</h4><p>下のプロンプトをコピーし、Geminiに貼り付けて送信します。</p></div>
           </li>
           <li class="step-item">
-            <div class="step-num">5</div>
+            <div class="step-num">4</div>
             <div class="step-body"><h4>結果を確認する</h4><p>出力された内容が音声と一致しているか、必ず人が確認します。</p></div>
           </li>
         </ol>
@@ -150,17 +144,15 @@
       <div class="prompt-card">
         <div class="prompt-card-head">
           <div>
-            <h4>プロンプト1：文字起こしと整理</h4>
-            <p class="prompt-scene">録音した音声を文字起こしし、話し合いの内容を整理します。</p>
+            <h4>プロンプト1：要約と整理</h4>
+            <p class="prompt-scene">録音した音声を、文字起こしを挟まずそのまま要約し、話し合いの内容を整理します。</p>
           </div>
           <button type="button" class="copy-btn" data-copy-target="#prompt1-1">
             <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
             <span class="copy-label">コピー</span>
           </button>
         </div>
-        <div class="prompt-body" id="prompt1-1">添付した音声を文字起こししてください。
-
-その後、次の項目に分けて整理してください。
+        <div class="prompt-body" id="prompt1-1">添付した音声の内容を要約し、次の項目に分けて整理してください。
 
 ・話題
 ・主な意見
@@ -232,7 +224,7 @@
       <h2 class="section-title">実践例</h2>
       <div class="example-card">
         <h4>職員朝会の録音から連絡文を作る</h4>
-        <p>職員朝会をボイスメモで録音し、Geminiに共有。プロンプト1で文字起こしと整理を行い、プロンプト2で管理職への報告に使える議事録を作成。プロンプト3で自分が担当する作業だけをToDoとして抽出し、期限を確認しました。</p>
+        <p>職員朝会をボイスメモで録音し、そのままGeminiに共有。プロンプト1で要約と整理を行い、プロンプト2で管理職への報告に使える議事録を作成。プロンプト3で自分が担当する作業だけをToDoとして抽出し、期限を確認しました。</p>
       </div>
     </div>
   </section>
